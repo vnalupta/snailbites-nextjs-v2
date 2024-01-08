@@ -1,25 +1,30 @@
+'use client';
 import { useRef } from "react";
-import useIntersectionObserver from "../hooks/useIntersectionObserver";
+
+import styles from './bio.module.scss'
+import profile from '/public/profile.png'
+
 import Button from "./button";
 import Image from "next/image";
 import Link from "next/link";
-import styled from "styled-components";
 
-function Bio() {
+import useIntersectionObserver from '@/utils/useIntersectionObserver'
+
+const Bio = () => {
     const bioRef = useRef(null);
     const [inView] = useIntersectionObserver(bioRef, {
         threshold: 0.3,
     });
 
     return (
-        <BioContainer>
-            <BioColumn>
-                <BioWrapper>
+        <section className={styles.container}>
+            <div className={`${styles.column} ${styles.lhs}`}>
+                <div className={styles.bioWrapper}>
                     <BioBg />
-                </BioWrapper>
+                </div>
 
                 <Image
-                    src="/images/profile.png"
+                    src={profile}
                     alt="Vincent Nalupta's shadow against some subway tiles."
                     width={240}
                     height={320}
@@ -28,15 +33,10 @@ function Bio() {
                         zIndex: 10                        
                     }}
                 />
-            </BioColumn>
-            <BioColumn rhs={true} inView={inView}>
+            </div>
+            <Profile inView={inView}>
                 {/* fix heading variant */}
-                <h2
-                    ref={bioRef}
-                    style={{
-                        marginBottom: "10px",
-                    }}
-                >
+                <h2 ref={bioRef} style={{ marginBottom: "10px" }}>
                     HELLO!
                 </h2>
                 <p>
@@ -44,7 +44,7 @@ function Bio() {
                     Manager.
                 </p>
                 <p>
-                    I've won some{" "}
+                    I&apos;ve won some{" "}
                     <Link
                         href="https://www.commarts.com/webpicks/timothy-goodman"
                         target="_blank"
@@ -70,96 +70,34 @@ function Bio() {
                     </Link>
                     .
                 </p>
-                <p
-                    style={{
-                        marginBottom: "30px",
-                    }}
-                >
+                <p style={{ marginBottom: "30px"}}>
                     This is my space to flex my design chops and write about
                     interesting tech.
                 </p>
 
                 <Link href="/blog">
                     {/* Fix responsive */}
-
-                    <BioButton>Read the Blog</BioButton>
+                    <Button>Read the Blog</Button>
                 </Link>
-            </BioColumn>
-        </BioContainer>
+            </Profile>
+        </section>
     );
 }
-const BioContainer = styled.section`
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 0 73px;
 
-    @media (maxWidth: 540px) {
-        padding: 0 25px;
-    }
-`;
-
-const BioColumn = ({
-    rhs,
-    inView,
-    children,
-}: {
-    rhs?: boolean;
+const Profile = ({ inView, children }: {
     inView?: boolean;
-    children: any;
+    children?: React.ReactNode[]
 }) => {
-    const base = {
-        maxWidth: "300px",
-        alignSelf: "flex-end",
-    };
-
-    let styles = {
-        ...base,
-        ...(rhs
-            ? {
-                  transform: "translateX(10px)",
-                  opacity: 0,
-                  transition: "250ms ease-in",
-              }
-            : {
-                  paddingRight: "50px",
-                  '@media (maxWidth: 768px)': {
-                      display: 'none'
-                  },
-                  position: "relative" as any,
-              }),
-        ...(rhs &&
-            inView && {
-                transform: "translateX(0)",
-                opacity: 1,
-            }),
-    };
-
-    return <div style={styles}>{children}</div>;
-};
-// const BioProfile = styled(BioColumn)`
-//     position: relative;
-//     padding-right: 50px;
-
-//     @media (maxWidth: 768px) {
-//         display: none;
-//     }
-// `
-
-const BioWrapper = styled.div`
-    width: 385px;
-    position: absolute;
-    left: -145px;
-    top: -113px;
-`;
-
-const BioButton = styled(Button)<{
-        children: any;
-    }>`
-    @media (maxwidth: 768px) {
-        margin: 0 auto;
-    }
-`;
+    return(
+    <div className={`${styles.column} ${styles.rhs}`}
+        style={{
+            transform: inView ? `translateX(0)` : `initial`,            
+            opacity: inView ? 1 : 0
+        }}>
+        {children}
+    </div>
+    )
+}
 
 const BioBg = () => (
     <svg viewBox="0 0 435 490" xmlns="http://www.w3.org/2000/svg">

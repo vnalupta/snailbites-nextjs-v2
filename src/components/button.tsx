@@ -1,4 +1,4 @@
-import { Color } from '../theme/theme'
+import Color from "@/styles/color.module.scss";
 
 /**
  * Button

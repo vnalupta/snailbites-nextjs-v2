@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 73px 200px;
+
+    @media (max-width: 540px) {
+        padding: 0 25px;
+    }
+}
+.column {
+    max-width: 300px;
+    align-self: flex-end;
+}
+.bioWrapper {
+    width: 385px;
+    position: absolute;
+    left: -145px;
+    top: -113px;
+
+
+}
+
+.rhs {
+    transform: translateX(10px);
+    opacity: 0;
+    transition: 250ms ease-in;
+}
+.lhs {
+    padding-right: 50px;
+    position: relative;
+    @media (max-width: 768px) {
+        display: none
+    }        
+}
+.bioButton {
+    @media (maxwidth: 768px) {
+        margin: 0 auto;
+    }
+}

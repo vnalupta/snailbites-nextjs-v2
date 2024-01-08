@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './jumbotron.module.css'
-import { Children, useRef } from 'react';
+import { useRef } from 'react';
 
 import useIntersectionObserver from '@/utils/useIntersectionObserver'
 

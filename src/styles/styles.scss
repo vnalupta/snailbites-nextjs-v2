@@ -21,7 +21,9 @@ body {
     background: $sesame;
     line-height: 1.65;
 }
-
+main {
+    background: rgb(48, 74, 129);
+}
 h1, h2, h3, h4, h5, dt {
     font-style: italic;
     line-height: 1.15;
