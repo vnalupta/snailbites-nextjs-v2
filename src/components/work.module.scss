@@ -1,0 +1,114 @@
+@import "../styles/color.module";
+
+$FADE_TIMING: 350ms;
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 73px;
+
+    @media (max-width: 540px) {
+        padding: 0 25px;
+    }
+}
+.projectList {
+    list-style-type: none;
+
+    li {
+      margin-bottom: .75rem;
+
+      @media (max-width: 1100px) {
+        display: inline;
+
+        &:after {
+          content: '|';
+        }
+
+        &:last-child:after {
+          content: none;
+        }
+      }
+    }
+}
+.projectListLink {
+    text-align: initial;
+    background: inherit;
+    border: none;
+    text-decoration: none;
+    transition: text-shadow 300ms ease-out, color 250ms ease-out;
+
+    &:hover,
+    &:focus {
+      text-shadow: 1px 1px 1px rgb(0,0,0,.5);
+      color: $eggshell;
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
+}
+
+.workWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 1100px) {
+      flex-direction: row;
+      align-items: initial;
+    }
+}
+
+.projectWrapper {
+    // default computed <figure> styles
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+
+    flex: none;
+
+    @media (min-width: 1100px) {
+    flex: 0 0 630px;
+    }
+
+    position: relative;
+    width: 630px;
+    height: 490px;
+}
+.screenshot {
+    transition: opacity $FADE_TIMING ease-out;
+    opacity: 1;
+}
+.project {
+    margin: 0;
+    position: absolute;
+    top: 26px;
+    left: 25px;
+    width: 580px;
+    height: 333px;
+    overflow: hidden;
+}
+.projectScreenshot {
+    position: absolute;
+    margin: 0;
+    padding: 10px;
+    background-color: $sesame;
+    transition: bottom $FADE_TIMING ease-out;
+
+    & a {
+        text-decoration: none;
+    }
+}
+
+.sidebar {
+    flex: 1 1 100%;
+    text-align: center;
+
+    @media (min-width: 1100px) {
+      text-align: left;
+      flex: initial;
+    }
+}

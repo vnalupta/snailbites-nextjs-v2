@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
-import { Color } from "@theme/theme";
+'use client';
 
+import { useState, useEffect, useRef } from "react";
+import Color from "@/styles/color.module.scss";
+import styles from './work.module.scss'
+import imac from "/public/screenshots/work-imac.png";
 
-import useIntersectionObserver from "../hooks/useIntersectionObserver";
-import imac from "/public/images/screenshots/work-imac.png";
-import Button from './button';
+import Button from '@/components/button';
 import Image from 'next/image';
+
+import useIntersectionObserver from "@/utils/useIntersectionObserver";
 
 const projects = [
     {
@@ -81,10 +83,8 @@ const projects = [
     }
 ]
 
-const FADE_TIMING = 350;
-
 const Work = () => {
-    const [project, setProject] = useState(null)
+    const [project, setProject] = useState(projects[0])
     const [loading, setLoading] = useState(true)
     const [open, setDrawer] = useState(false)
 
@@ -97,7 +97,6 @@ const Work = () => {
     // TODO: this should handle itself as a side effect
     // of projects being set
     useEffect(() => {
-        setProject(projects[0])
         if (inView) {
             setTimeout(() => {
                 setLoading(false);
@@ -107,10 +106,10 @@ const Work = () => {
     }, [inView])
 
     /**
-     * Click handler for project selector  
-     *     
-     * @param {*} item     
-     * @summary Sets loading state and begins fade animations     
+     * Click handler for project selector
+     *
+     * @param {*} item
+     * @summary Sets loading state and begins fade animations
      */
     function handleClick(item) {
         if (item.shortname === project.shortname) {
@@ -146,186 +145,67 @@ const Work = () => {
     }
     return (
         <>
-          <h2 id="work" style={{textAlign: `center`}}>Featured Projects</h2>          
-            <WorkContainer>
-            <StyledWorkWrapper>
-              <StyledSidebar>
-                <StyledList>
+          <h2 id="work" style={{textAlign: `center`}}>Featured Projects</h2>
+            <section className={styles.container}>
+            <div className={styles.workWrapper}>
+              <aside className={styles.sidebar}>
+                <ul className={styles.projectList}>
                   {projects.map(item => (
                     <li key={item.shortname}>
-                      <StyledLinkButton
-                        selected={project && project.shortname === item.shortname}
+                      {/* color: ${props => props.selected ? Color.eggshell : Color.neon}; */}
+                      <button
+                        style={{
+                          color: project.shortname === item.shortname
+                            ? Color.eggshell
+                            : Color.neon
+                        }}
                         onClick={() => handleClick(item)}
                       >
                         {item.name}
-                      </StyledLinkButton>
+                      </button>
                     </li>
                   )
                   )}
-                </StyledList>
-              </StyledSidebar>
-              <StyledFigureWrapper ref={figureRef} 
-                    style={{
-                      background: `url(${imac.src}) no-repeat 0 0`
-                    }}>
-                <StyledFigure>
+                </ul>
+              </aside>
+              <div className={styles.projectWrapper}
+                  ref={figureRef}
+                  style={{
+                    background: `url(${imac.src}) no-repeat 0 0`
+                  }}>
+                <figure className={styles.project}>
                   {project && (
                     <>
-                    <StyledScreenshot
-                      className={loading ? 'loading' : null}
-                    >
-                      <Image                      
-                          src={`/images/screenshots/${project.shortname}.png`}
-                          width={580}
-                          height={333}
-                          alt={project.caption}
-                      />                                     
-                    </StyledScreenshot>                    
-                    <StyledCaption open={open} className="small">                
-                      {project.caption}<br />
-                      {project.url && ` `}
-                      {project.url && <a href={project.url} rel="noopener noreferrer" target="_blank">
-                        {project.link ? project.link : 'Link'} &rarr;
-                        </a>}
-                    </StyledCaption>
+                      <div style={{ opacity: loading ? 0 : 1 }}>
+                        <Image
+                            src={`/images/screenshots/${project.shortname}.png`}
+                            width={580}
+                            height={333}
+                            alt={project.caption}
+                        />
+                      </div>
+
+                      <figcaption
+                        className={`small ${styles.projectScreenshot}`}
+                        style={{
+                          bottom: open ? 0 : `-200px`
+                        }}
+                        >
+                        {project.caption}<br />
+                        {project.url && ` `}
+                        {project.url && <a href={project.url} rel="noopener noreferrer" target="_blank">
+                          {project.link ? project.link : 'Link'} &rarr;
+                          </a>}
+                      </figcaption>
                     </>
                   )}
-                </StyledFigure>
-              </StyledFigureWrapper>
-            </StyledWorkWrapper>
-          
-          </WorkContainer>
+                </figure>
+              </div>
+            </div>
+
+          </section>
         </>
       )
     }
-    
-    const WorkContainer = styled.section`
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 0 73px;
 
-    @media (max-width: 540px) {
-        padding: 0 25px;
-    }
-`
-    
-    
-    const StyledList = styled.ul`
-      list-style-type: none;
-    
-      li {
-        margin-bottom: .75rem;
-    
-        @media (max-width: 1100px) {
-          display: inline;
-          
-          &:after {
-            content: '|';
-          }
-    
-          &:last-child:after {
-            content: none;
-          }
-        }
-      }
-    
-    `
-    
-    const StyledLinkButton = styled.button<{
-        selected: boolean;
-      }>`
-      text-align: initial;
-      background: inherit;
-      border: none;
-      text-decoration: none;
-      transition: text-shadow 300ms ease-out, color 250ms ease-out;
-    
-      &:hover,
-      &:focus {
-        text-shadow: 1px 1px 1px rgb(0,0,0,.5);
-        color: ${Color.eggshell};
-        cursor: pointer;
-      }
-    
-      &:focus {
-        outline: none;
-      }
-      color: ${props => props.selected ? Color.eggshell : Color.neon};
-    `;
-   
-    
-    const StyledWorkWrapper = styled.div`
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    
-      @media (min-width: 1100px) {
-        flex-direction: row; 
-        align-items: initial; 
-      }  
-    `
-    
-    const StyledSidebar = styled.aside`
-      flex: 1 1 100%; 
-      text-align: center;
-    
-      @media (min-width: 1100px) {
-        text-align: left;
-        flex: initial;  
-      }  
-    `
-    const StyledFigureWrapper = styled.div`
-      // default computed <figure> styles
-      margin-block-start: 1em;
-      margin-block-end: 1em;
-      margin-inline-start: 40px;
-      margin-inline-end: 40px;
-    
-      flex: none;
-    
-      @media (min-width: 1100px) {
-        flex: 0 0 630px;    
-      }  
-    
-      position: relative;
-      width: 630px;
-      height: 490px;    
-    `
-    const StyledFigure = styled.figure`
-      margin: 0;
-      position: absolute;
-      top: 26px;
-      left: 25px;
-      width: 580px;
-      height: 333px;
-      overflow: hidden;              
-    `
-    
-    const StyledScreenshot = styled.div`  
-      transition: opacity ${FADE_TIMING}ms ease-out;
-      opacity: 1;  
-      &.loading {
-        opacity: 0;
-      }
-    `
-    
-    const StyledCaption = styled.figcaption<{
-        open: boolean;
-      }>`
-      position: absolute;      
-      margin: 0;
-      padding: 10px;
-    
-      background-color: ${Color.sesame};
-    
-      & a {
-        text-decoration: none;
-      }
-      
-      transition: bottom ${FADE_TIMING}ms ease-out;  
-      bottom: ${props => props.open ? 0 : `-200px`}
-    `;
-    
-    
     export default Work;
