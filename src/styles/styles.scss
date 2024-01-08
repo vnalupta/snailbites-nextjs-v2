@@ -1,9 +1,8 @@
-// from theme.ts
-$sesame: #202020;
-$plum: #4F1C48;
-$ocean: #304A81;
-$neon: #D6E307;
-$eggshell: #D8D8D8;
+@import "./color.module";
+
+/*
+ * FONT
+ **/
 $fontSize: 16px;
 $fontFamily: Poppins;
 
@@ -15,7 +14,7 @@ body {
 }
 
 html {
-    font: $fontSize $fontFamily, sans-serif;        
+    font-size: $fontSize;
 }
 body {                
     color: $eggshell;
