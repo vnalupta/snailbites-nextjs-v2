@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, SetStateAction } from "react";
 import Color from "@/styles/color.module.scss";
 import styles from './work.module.scss'
 import imac from "/public/screenshots/work-imac.png";
@@ -10,7 +10,16 @@ import Image from 'next/image';
 
 import useIntersectionObserver from "@/utils/useIntersectionObserver";
 
-const projects = [
+const SCREENSHOT_PATH = `/screenshots/`
+
+interface ProjectItem {
+  shortname : string;
+  name : string;
+  caption : string;
+  url : string | null;
+  link : string | null;
+}
+const projects: Array<ProjectItem> = [
     {
         'shortname': 'dls',
         'name': "Grubhub Design System",
@@ -111,19 +120,20 @@ const Work = () => {
      * @param {*} item
      * @summary Sets loading state and begins fade animations
      */
-    function handleClick(item) {
+    function handleClick(item: ProjectItem) {
         if (item.shortname === project.shortname) {
             return;
         }
 
-        let start;
-        let id;
-        const tick = timestamp => {
+        let start: EpochTimeStamp;
+        let id: EpochTimeStamp;
+        const tick = (timestamp: EpochTimeStamp) => {
             if (!start) {
                 start = timestamp;
             }
+            console.log(timestamp, start, parseInt(styles.FADE_TIMING, 0))
 
-            if (timestamp - start <= FADE_TIMING) {
+            if (timestamp - start <= parseInt(styles.FADE_TIMING, 0)) {
                 window.requestAnimationFrame(tick)
             } else {
                 setProject(item);
@@ -147,12 +157,11 @@ const Work = () => {
         <>
           <h2 id="work" style={{textAlign: `center`}}>Featured Projects</h2>
             <section className={styles.container}>
-            <div className={styles.workWrapper}>
+            <div className={styles.sidebarWrapper}>
               <aside className={styles.sidebar}>
                 <ul className={styles.projectList}>
                   {projects.map(item => (
-                    <li key={item.shortname}>
-                      {/* color: ${props => props.selected ? Color.eggshell : Color.neon}; */}
+                    <li key={item.shortname} className={styles.projectListLink}>
                       <button
                         style={{
                           color: project.shortname === item.shortname
@@ -176,9 +185,12 @@ const Work = () => {
                 <figure className={styles.project}>
                   {project && (
                     <>
-                      <div style={{ opacity: loading ? 0 : 1 }}>
+                      <div
+                        className={styles.screenshot}
+                        style={{ opacity: loading ? 0 : 1 }}
+                      >
                         <Image
-                            src={`/images/screenshots/${project.shortname}.png`}
+                            src={`${SCREENSHOT_PATH}${project.shortname}.png`}
                             width={580}
                             height={333}
                             alt={project.caption}
@@ -186,7 +198,7 @@ const Work = () => {
                       </div>
 
                       <figcaption
-                        className={`small ${styles.projectScreenshot}`}
+                        className={`small ${styles.projectCaption}`}
                         style={{
                           bottom: open ? 0 : `-200px`
                         }}

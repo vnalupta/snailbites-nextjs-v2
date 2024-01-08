@@ -1,6 +1,12 @@
+@use "sass:string";
 @import "../styles/color.module";
 
-$FADE_TIMING: 350ms;
+/* Do I need all of this */
+$FADE_TIMING: 350;
+$fadeTiming: string.unquote($FADE_TIMING + "ms");
+:export {
+  FADE_TIMING: $FADE_TIMING
+}
 
 .container {
     display: flex;
@@ -11,6 +17,25 @@ $FADE_TIMING: 350ms;
     @media (max-width: 540px) {
         padding: 0 25px;
     }
+}
+.sidebarWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 1100px) {
+    flex-direction: row;
+    align-items: initial;
+  }
+}
+.sidebar {
+  flex: 1 1 100%;
+  text-align: center;
+
+  @media (min-width: 1100px) {
+    text-align: left;
+    flex: initial;
+  }
 }
 .projectList {
     list-style-type: none;
@@ -31,7 +56,7 @@ $FADE_TIMING: 350ms;
       }
     }
 }
-.projectListLink {
+.projectListLink > button {
     text-align: initial;
     background: inherit;
     border: none;
@@ -49,18 +74,6 @@ $FADE_TIMING: 350ms;
       outline: none;
     }
 }
-
-.workWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    @media (min-width: 1100px) {
-      flex-direction: row;
-      align-items: initial;
-    }
-}
-
 .projectWrapper {
     // default computed <figure> styles
     margin-block-start: 1em;
@@ -78,10 +91,6 @@ $FADE_TIMING: 350ms;
     width: 630px;
     height: 490px;
 }
-.screenshot {
-    transition: opacity $FADE_TIMING ease-out;
-    opacity: 1;
-}
 .project {
     margin: 0;
     position: absolute;
@@ -91,24 +100,18 @@ $FADE_TIMING: 350ms;
     height: 333px;
     overflow: hidden;
 }
-.projectScreenshot {
+.projectCaption {
     position: absolute;
     margin: 0;
     padding: 10px;
     background-color: $sesame;
-    transition: bottom $FADE_TIMING ease-out;
+    transition: bottom $fadeTiming ease-out;
 
     & a {
         text-decoration: none;
     }
 }
-
-.sidebar {
-    flex: 1 1 100%;
-    text-align: center;
-
-    @media (min-width: 1100px) {
-      text-align: left;
-      flex: initial;
-    }
+.screenshot {
+  transition: opacity $fadeTiming ease-out;
+  opacity: 1;
 }
