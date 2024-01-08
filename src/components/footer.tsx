@@ -1,27 +1,30 @@
-import React from "react"
-import { Color } from '@theme/theme';
-import styled from "styled-components";
+'use client'
 
-import Social from '@components/social';
-import BlogList from '@components/bloglist';
-import { useRouter } from "next/router";
-// import BlogFeed from "@components/blogfeed"
+import { usePathname } from 'next/navigation'
 
+import styles from "./footer.module.scss"
+import Color from "@/styles/color.module.scss"
 
-function Footer({posts}) {
+import Social from '@/components/social';
+import BlogFeed from '@/components/blogfeed';
 
-    const router = useRouter()
-    const location = router.pathname;
+const Footer = () => {
+    const pathname = usePathname();
 
     return (
-        <StyledFooter location={location}>
-            <FooterContainer>
+        <footer
+            className={styles.container}
+            style={{
+                backgroundColor: pathname === "/"
+                ? Color.plum
+                : Color.sesame
+            }}>
+            <div className={styles.footerWrapper}>
                 {/* Fixes zindex bug with mountain SVG above it */}
-                <section style={{zIndex: 10, position: `relative`}}>
-                    {/* {location === '/' && <BlogFeed />} */}
+                <section className={styles.footerBody}>
+                    {pathname === '/' && <BlogFeed />}
                     <p className="small">This site was made with {" "}
                         <a
-                            style={{color:`${Color.neon}`}}
                             href="https://nextjs.org/"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -30,7 +33,6 @@ function Footer({posts}) {
                         </a>
                         ,{" "}
                         <a
-                            style={{ color: `${Color.neon}`}}
                             href="https://www.sketch.com/"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -44,37 +46,9 @@ function Footer({posts}) {
                     </p>
                 </section>
                 <Social />
-        </FooterContainer>
-    </StyledFooter>
+        </div>
+    </footer>
     )
 }
-
-const StyledFooter = styled.footer<{
-        location: string;
-    }>`
-    overflow: hidden;
-    background-color: ${props => props.location === "/"        
-        ? Color.plum
-        : Color.sesame
-    };
-    padding: 1em 0;
-    color: ${Color.eggshell};
-
-    & a {
-        color: ${Color.neon};
-        text-decoration: none;
-    }
-`
-
-const FooterContainer = styled.footer`
-    display: flex;  
-    justify-content: space-between;
-    margin: 0 auto;
-    padding: 0 73px 60px;
-
-    @media (max-width: 540px) {
-        padding: 0 25px;
-    }
-`
 
 export default Footer

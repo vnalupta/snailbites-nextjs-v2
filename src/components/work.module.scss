@@ -12,7 +12,7 @@ $fadeTiming: string.unquote($FADE_TIMING + "ms");
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    padding: 0 73px;
+    padding: 0 73px 200px;
 
     @media (max-width: 540px) {
         padding: 0 25px;

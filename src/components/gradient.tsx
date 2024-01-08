@@ -1,5 +1,8 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from "react";
-import useIntersectionObserver from "../hooks/useIntersectionObserver";
+'use client';
+
+import { FunctionComponent, useEffect, useRef, useState } from "react";
+import styles from "./gradient.module.scss"
+import useIntersectionObserver from "@/utils/useIntersectionObserver";
 
 const Gradient = () => {
     const footerRef = useRef(null);
@@ -14,17 +17,12 @@ const Gradient = () => {
     }, [inView]);
 
     return (
-        <section ref={footerRef} style={{
-            position: 'relative',
-            height: '30vh',
-            // background: 'rgb(48, 74, 129)',
-            background: `linear-gradient(
-                180deg, 
-                rgba(48, 74, 129, 1) 0%, 
-                rgba(79, 28, 72, 1) 100%)
-            `
-        }}>
+        <section
+            ref={footerRef}
+            className={styles.container}>
             <svg viewBox="0 0 1440 380" xmlns="http://www.w3.org/2000/svg"
+
+                className={styles.gradient}
                 style={{
                     position: 'relative',
                     zIndex: 1
@@ -37,38 +35,32 @@ const Gradient = () => {
                 </defs>
 
                 <ellipse
-                    style={{
-                        transform: 'translate(35vw, 16vh)',
-                        opacity: .1
-                    }}
+                    className={styles.cloud1}
                     fill="#D8D8D8"
                     cx="171.5" cy="14.5" rx="203.5" ry="21.5">
                 </ellipse>
 
-                <Cloud
-                    inView={visible}
+                <ellipse
+                    className={styles.cloud2}
                     fill="#D8D8D8"
-                    cx="171.5" cy="14.5" rx="171.5" ry="14.5">
-                </Cloud>
+                    cx="171.5" cy="14.5" rx="171.5" ry="14.5"
+                    style={{
+                        animation: visible
+                            ? `4500ms moveHorizontal infinite alternate`
+                            : `inherit`
+                    }}>
+                </ellipse>
 
                 <ellipse
-                    style={{
-                        transform: 'translate(74vw, 23vh)',
-                        opacity: .1
-                    }}
+                    className={styles.cloud3}
                     fill="#D8D8D8"
                     cx="171.5" cy="14.5" rx="153.5" ry="11.5">
                 </ellipse>
 
                 <path d="M0 3041.525l558.176-162.19 256.6 162.19L1202.885 2784l302.113 319.999.002.001v66H0v-128.475z" transform="translate(0 -2784)" fill="url(#duskMountain)" fillRule="evenodd" opacity=".2" />
             </svg>
-            <div style={{
-                width: '18vh',
-                position: 'absolute',
-                right: '12vh',
-                top: '-9vh',
-                opacity: 0.85,
-            }}>
+            <div
+                className={styles.sun}>
                 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="50" cy="50" r="50" fill="#D6E307" fillRule="evenodd" />
                 </svg>
@@ -76,63 +68,5 @@ const Gradient = () => {
         </section>
     )
 }
-
-// const StyledMoon = styled.div`
-//     width: 18vh;
-//     position: absolute;
-//     right: 12vh;
-//     top: -9vh;
-//     opacity: 0.85;
-// `
-
-const Cloud: FunctionComponent<{
-    inView: boolean,
-    fill?: string,
-    cx: string;
-    cy: string;
-    rx: string;
-    ry: string;
-}> = ({ inView }) => {
-    let base = {
-        opacity: .25,
-        transform: 'translate(1vw, 20vh)'
-    }
-
-    const styles = {
-        ...base,
-        ...(inView && { animation: '4500ms moveHorizontal infinite alternate' })
-    }
-
-    return (
-        <ellipse style={styles} />        
-    )
-}
-//     opacity: .25;
-//     transform: translate(1vw, 20vh);     
-
-//     ${props => props.visible && `
-//         animation: 4500ms moveHorizontal infinite alternate;    
-//     `}
-
-//     @keyframes moveHorizontal {
-//         from { 
-//             transform: translate(10vw, 22vh);
-//         }
-//         to {
-//             transform: translate(15vw, 22vh);
-//         }
-//     }
-// `
-
-// const StyledGradient = styled.section`
-//     position: relative;
-//     height: 30vh;
-//     background: rgb(48, 74, 129);
-//     background: linear-gradient(
-//         180deg,
-//         rgba(48, 74, 129, 1) 0%,
-//         rgba(79, 28, 72, 1) 100%
-//     );
-// `
 
 export default Gradient

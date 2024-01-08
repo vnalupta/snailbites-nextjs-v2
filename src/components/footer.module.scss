@@ -1,0 +1,26 @@
+@import "../styles/color.module.scss";
+
+.container {
+    overflow: hidden;
+    padding: 1em 0;
+    color: $eggshell;
+
+    & a {
+        color: $neon;
+        text-decoration: none;
+    }
+}
+.footerWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 20px 73px 60px;
+
+    @media (max-width: 540px) {
+        padding: 0 25px;
+    }
+}
+.footerBody {
+    z-index: 10;
+    position: relative;
+}

@@ -1,0 +1,27 @@
+.container {
+    position: relative;
+    background: linear-gradient(
+        180deg,
+        rgba(48, 74, 129, 1) 0%,
+        rgba(79, 28, 72, 1) 100%);
+}
+
+.cloud1 {
+    transform: translate(35vw, 16vh);
+    opacity: .1;
+}
+.cloud2 {
+    opacity: .25;
+    transform: translate(1vw, 20vh);
+}
+.cloud3 {
+    transform: translate(74vw, 23vh);
+    opacity: .1;
+}
+.sun {
+    width: 18vh;
+    position: absolute;
+    right: 12vh;
+    top: -9vh;
+    opacity: 0.85;
+}

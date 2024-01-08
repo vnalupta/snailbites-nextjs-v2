@@ -1,0 +1,24 @@
+@import "../styles/color.module.scss";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    transform: translateY(-1.7em);
+    color: $eggshell;
+}
+.heading {
+    margin-bottom: .5em;
+}
+
+.list {
+    margin: 0 0 .5em 0;
+    padding: 0;
+    list-style-type: none;
+
+    & li {
+        display: inline;
+        margin-left: 1em;
+    }
+}
