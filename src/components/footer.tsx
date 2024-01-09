@@ -12,13 +12,7 @@ const Footer = () => {
     const pathname = usePathname();
 
     return (
-        <footer
-            className={styles.container}
-            style={{
-                backgroundColor: pathname === "/"
-                ? Color.plum
-                : Color.sesame
-            }}>
+        <footer className={styles.container}>
             <div className={styles.footerWrapper}>
                 {/* Fixes zindex bug with mountain SVG above it */}
                 <section className={styles.footerBody}>

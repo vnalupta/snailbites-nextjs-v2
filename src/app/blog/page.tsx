@@ -1,29 +1,47 @@
 /* eslint-disable @next/next/no-async-client-component */
+import Navigation from "@/components/navigation";
+import styles from "./blog.module.scss";
 
-import React, { useEffect, useState } from "react";
 import { getMetadata } from "@/utils/getMetadata";
 import { getPost } from "@/utils/getPost";
+
+import Mountains from "@/components/mountains";
+import Gradient from "@/components/gradient";
+import Footer from "@/components/footer";
+
 
 export default async function Blog() {
     const metadata = getMetadata();
     const post = await getPost();
 
-    // if (!props.allPostsData) return (<h1>hi</h1>);
     return (
         // <main role="main" style={{ width: ['100%', '100%', '768px'], variant: 'styles.layout' }}>
+        <>
+        <header>
+                <Navigation />
+                <Mountains />
+            </header>
         <main>
-            <section style={{ marginTop: "100px" }}>
-                <h1>Blogs</h1>
-                <ul>
+            <div className={styles.wrapper}>
+            <aside>
+            <ul>
                     {metadata &&
-                        metadata.map((post, i) => (
-                            <li key={post.id}>{post.id}</li>
+                        metadata.map((item, i) => (
+                            <li key={item.id}>{item.title}</li>
                         ))}
                 </ul>
+            </aside>
+            <section>
+                <h1>Blogs</h1>
+
                 <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
             </section>
             <section></section>
+            </div>
+            <Gradient />
+            <Footer />
         </main>
+        </>
     );
 }
 

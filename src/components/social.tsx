@@ -14,14 +14,7 @@ function Social() {
     const pathname = usePathname();
 
     return (
-        <div
-            className={styles.container}
-            style={{
-                backgroundColor: pathname === "/"
-                ? Color.plum
-                : Color.sesame
-            }}
-        >
+        <div className={styles.container}>
             <p className={styles.heading}>What&apos;s good?</p>
             <ul className={styles.list}>
                 <li><a href="https://twitter.com/snailbites">Twitter</a></li>
