@@ -9,38 +9,39 @@ import Mountains from "@/components/mountains";
 import Gradient from "@/components/gradient";
 import Footer from "@/components/footer";
 
-
 export default async function Blog() {
     const metadata = getMetadata();
     const post = await getPost();
 
     return (
-        // <main role="main" style={{ width: ['100%', '100%', '768px'], variant: 'styles.layout' }}>
         <>
-        <header>
+            <header>
                 <Navigation />
                 <Mountains />
             </header>
-        <main>
-            <div className={styles.wrapper}>
-            <aside>
-            <ul>
-                    {metadata &&
-                        metadata.map((item, i) => (
-                            <li key={item.id}>{item.title}</li>
-                        ))}
-                </ul>
-            </aside>
-            <section>
-                <h1>Blogs</h1>
+            <main>
+                <div className={styles.wrapper}>
+                    <section className={styles.post}>
+                        <h1>{post.title}</h1>
 
-                <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
-            </section>
-            <section></section>
-            </div>
-            <Gradient />
-            <Footer />
-        </main>
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: post.contentHtml,
+                            }}
+                        />
+                    </section>
+                    <aside className={styles.sidebar}>
+                        <h5>Read more</h5>
+                        <ul className={styles.links}>
+                            {metadata?.map((item, i) => (
+                                <li key={item.id}>{item.title}</li>
+                            ))}
+                        </ul>
+                    </aside>
+                </div>
+                <Gradient />
+                <Footer />
+            </main>
         </>
     );
 }

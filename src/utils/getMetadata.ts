@@ -22,7 +22,7 @@ export interface PostMetadata {
  *
  * @returns Array<string>
  */
-export function getMetadata(): PostMetadata {
+export function getMetadata() {
     // Get file names under /posts
     const dirNames = fs.readdirSync(postsDirectory);
 

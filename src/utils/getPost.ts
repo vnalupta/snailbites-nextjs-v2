@@ -46,6 +46,7 @@ export async function getPost(shortname?: string) {
     // Combine the data with the id
     // currentDirName should have same name as md file
     return {
+        title: matterResult?.data?.title,
         contentHtml
     };
 }
