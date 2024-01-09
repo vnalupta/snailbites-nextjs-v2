@@ -1,0 +1,145 @@
+@import "../styles/color.module.scss";
+
+$baseUnit: 11px;
+$baseTiming: 250ms;
+
+.container {
+    position: fixed;
+}
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    height: 100vh;
+    width: 100vw;
+
+    background-color: $eggshell;
+
+    transition: 350ms ease-out;
+    transition-delay: 50ms;
+}
+.list {
+    transition: 200ms visibility ease-in;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    top: -1em;
+
+    padding: 0;
+    margin: 0;
+
+    list-style-type: none;
+    z-index: 1;
+
+    visibility: hidden;
+
+    & > li {
+        transition: 200ms opacity ease-in;
+        transition-delay: 50ms;
+
+        text-transform: uppercase;
+        margin-bottom: 0.5em;
+
+        opacity: 0;
+
+        & > a {
+            text-decoration: none;
+            color: $sesame;
+
+            &.selected {
+                pointer-events: none;
+                color: $plum;
+            }
+
+            &:after {
+                content: "";
+                width: 0;
+                height: 4px;
+                display: block;
+                background: $sesame;
+                transition: width 250ms ease-in-out;
+            }
+
+            &:hover:after {
+                width: 100%;
+            }
+
+            &.selected:after {
+                transition: none;
+                width: 100%;
+                background: $plum;
+            }
+        }
+    }
+
+    &.open {
+        visibility: visible;
+        & > li {
+            opacity: 1;
+        }
+    }
+}
+.navButton {
+    position: relative;
+    cursor: pointer;
+    z-index: 100;
+
+    width: $baseUnit * 3;
+    height: $baseUnit * 3;
+    margin: $baseUnit * 2 0 0 $baseUnit * 2;
+
+    & > div {
+        position: absolute;
+        left: 0;
+
+        height: 4px;
+        width: 100%;
+
+        opacity: 1;
+        transform: rotate(0);
+
+        background-color: $eggshell;
+
+        transition-property: top, left, rotate, opacity, transform,
+            background-color;
+        transition-duration: $baseTiming;
+        transition-timing-function: ease-in;
+    }
+    & div:nth-child(1) {
+        top: 0;
+    }
+    & div:nth-child(2) {
+        top: $baseUnit;
+    }
+    & div:nth-child(3) {
+        top: $baseUnit * 2;
+    }
+
+    &.open {
+        & div {
+            background-color: $sesame;
+        }
+        & div:nth-child(1) {
+            top: $baseUnit;
+            transform: rotate(135deg);
+        }
+        & div:nth-child(2) {
+            top: $baseUnit;
+            opacity: 0;
+            left: $baseUnit * -4;
+        }
+        & div:nth-child(3) {
+            top: $baseUnit;
+            transform: rotate(-135deg);
+        }
+    }
+}

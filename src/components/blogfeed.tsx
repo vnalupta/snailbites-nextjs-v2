@@ -6,16 +6,16 @@ const BlogFeed = () => {
 
     return (
         <>
-            <p className="lead" style={{marginBottom: `.5em;`}}>Blog Posts</p>
+            <p className="lead" style={{marginBottom: `.5em`}}>Blog Posts</p>
             <StyledList>
                 {/*
                 {entries.map((entry, i) => (
                     <li className="body" key={i}>
-                         <FadeLink 
+                         <FadeLink
                             to={`blog/${entry.node.fields.slug}`}
                         >
                             {entry.node.frontmatter.title}
-                        </FadeLink> 
+                        </FadeLink>
                     </li>
                 ))}
             */}

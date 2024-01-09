@@ -1,13 +1,11 @@
 'use client';
 
-import { useState, useEffect, useRef, SetStateAction } from "react";
+import { useState, useEffect, useRef } from "react";
 import Color from "@/styles/color.module.scss";
 import styles from './work.module.scss'
+
 import imac from "/public/screenshots/work-imac.png";
-
-import Button from '@/components/button';
 import Image from 'next/image';
-
 import useIntersectionObserver from "@/utils/useIntersectionObserver";
 
 const SCREENSHOT_PATH = `/screenshots/`
@@ -152,8 +150,8 @@ const Work = () => {
         id = window.requestAnimationFrame(tick)
     }
     return (
-        <>
-          <h2 id="work" style={{textAlign: `center`}}>Featured Projects</h2>
+        <div id="work">
+          <h2 style={{textAlign: `center`}}>Featured Projects</h2>
             <section className={styles.container}>
             <div className={styles.sidebarWrapper}>
               <aside className={styles.sidebar}>
@@ -214,7 +212,7 @@ const Work = () => {
             </div>
 
           </section>
-        </>
+        </div>
       )
     }
 

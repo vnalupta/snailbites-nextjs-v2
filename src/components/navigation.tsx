@@ -1,55 +1,32 @@
 'use client';
 
 import { useState } from "react"
-import { usePathname } from "next/navigation";
-
 import styles from "./navigation.module.scss";
-
 import Link from "next/link";
 
 const rootPath = `/`
 const blogPath = `/blog/`
-const cvPath = `/cv/`
 
-function Navigation() {
+const Navigation = () => {
     const [open, setOpen] = useState(false);
-    const pathname = usePathname()
 
-    // function scrollHandler(target) {
-    //     if (!target) {
-    //         return;
-    //     }
-
-        // see if you stil need any of this
-
-        // if (target === 'work') {
-        //     setTimeout(() => {
-        //         // convert to Ref
-        //         const height = document.getElementById('work').offsetTop || 1600;
-        //         window.scrollTo({ top: height - 100, behavior: 'smooth' })
-        //     }, 600);
-        // }
-
-        // if (target === 'home') {
-        //     setTimeout(() => {
-        //         window.scrollTo({ top: 0, behavior: 'smooth' })
-        //     }, 600);
-        // }
-    // }
-
-    const handleClick = (target?: EventTarget) => {
+    const handleClick = (event?: React.MouseEvent<HTMLAnchorElement>, destination?: string) => {
         setOpen(!open);
 
-        // // TODO: get location from target
-        // if (pathname === rootPath && !!target) {
-        //     scrollHandler(target);
-        // }
+        if (!destination) {
+            return;
+        }
+        // work is the only one that needs scrolling
+        setTimeout(() => {
+            const workEl = document.getElementById('work');
+            workEl?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 350);
     }
 
     return (
         <nav className={styles.container} style={{ zIndex: open ? 1000 : 20 }}>
             <div
-                className={open ? `${styles.navIsOpen} ${styles.navButton}` : `${styles.navButton}`}
+                className={`${styles.navButton} ${open ? styles.open : ``}`}
                 aria-label="navigation"
                 onClick={e => handleClick()}>
                 <div></div>
@@ -66,17 +43,17 @@ function Navigation() {
 
             <ul className={`${styles.list} ${open ? `${styles.open}` : ``}`}>
                 <li className="h1">
-                    <Link href={rootPath} onClick={e => handleClick()}>
+                    <Link href={rootPath} onClick={(e) => handleClick(e)}>
                         Home
                     </Link>
                 </li>
                 <li className="h1">
-                    <Link href={rootPath} onClick={e => handleClick()}>
+                    <Link href={rootPath} onClick={(e) => handleClick(e, 'work')}>
                         Work
                     </Link>
                 </li>
                 <li className="h1">
-                    <Link href={blogPath} onClick={e => handleClick()}>
+                    <Link href={blogPath} onClick={(e) => handleClick(e)}>
                         Blog
                     </Link>
                 </li>
@@ -86,4 +63,4 @@ function Navigation() {
 }
 
 
-    export default Navigation
+export default Navigation
