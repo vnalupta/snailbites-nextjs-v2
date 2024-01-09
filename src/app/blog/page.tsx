@@ -1,45 +1,39 @@
-import React from "react"
-import BlogList from '@components/bloglist'
-import matter from "gray-matter";
+/* eslint-disable @next/next/no-async-client-component */
 
-export default function Blog ({ blogs, title, description, ...props }) {
+import React, { useEffect, useState } from "react";
+import { getMetadata } from "@/utils/getMetadata";
+import { getPost } from "@/utils/getPost";
+
+export default async function Blog() {
+    const metadata = getMetadata();
+    const post = await getPost();
+
+    // if (!props.allPostsData) return (<h1>hi</h1>);
     return (
         // <main role="main" style={{ width: ['100%', '100%', '768px'], variant: 'styles.layout' }}>
         <main>
-                <section style={{ marginTop: '100px'}}>
-                    <h1>Blogs</h1>
-                    <BlogList blogs={blogs} showDots />      
-                </section>              
+            <section style={{ marginTop: "100px" }}>
+                <h1>Blogs</h1>
+                <ul>
+                    {metadata &&
+                        metadata.map((post, i) => (
+                            <li key={post.id}>{post.id}</li>
+                        ))}
+                </ul>
+                <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+            </section>
+            <section></section>
         </main>
-    )
+    );
 }
 
-export async function getStaticProps() {
-    const configData = await import(`../../../siteconfig.json`)
-  
-    const blogs = ((context) => {
-      const keys = context.keys()
-      const values = keys.map(context)
-  
-      const data = keys.map((key, index) => {
-        let slug = key.replace(/^.*[\\\/]/, '').slice(0, -3)
-        const value = values[index]
-        // @ts-expect-error
-        const document = matter(value.default)                
-        return {
-          frontmatter: document.data,
-          markdownBody: document.content,
-          slug,
-        }
-      })
-      return data.reverse()
-    })(require.context('../../../blogs', true, /\.md$/))
-  
-    return {
-      props: {
-        blogs,
-        title: configData.default.title,
-        description: configData.default.description,
-      },
-    }
-  }
+// {blogs &&
+//   blogs.map((blog) => {
+//     return (
+//       <li key={blog.slug}>
+//         <Link href={{ pathname: `/blog/${blog.slug}` }}>
+//           {blog.frontmatter.title}
+//         </Link>
+//       </li>
+//     )
+//   })}
