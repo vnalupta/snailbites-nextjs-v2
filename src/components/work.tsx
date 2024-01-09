@@ -131,8 +131,6 @@ const Work = () => {
             if (!start) {
                 start = timestamp;
             }
-            console.log(timestamp, start, parseInt(styles.FADE_TIMING, 0))
-
             if (timestamp - start <= parseInt(styles.FADE_TIMING, 0)) {
                 window.requestAnimationFrame(tick)
             } else {

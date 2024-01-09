@@ -6,11 +6,13 @@ import Bio from "@/components/bio";
 import Work from "@/components/work";
 import Gradient from "@/components/gradient";
 import Footer from "@/components/footer";
+import Navigation from "@/components/navigation";
 
 export default function Home() {
     return (
         <>
             <header>
+                <Navigation />
                 <Jumbotron />
                 <Mountains />
             </header>
