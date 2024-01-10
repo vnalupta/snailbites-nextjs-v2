@@ -198,16 +198,29 @@ const Work = () => {
                             {project && (
                                 <>
                                     <div
-                                        className={styles.screenshot}
+                                        className={styles.screenshotWrapper}
                                         style={{ opacity: loading ? 0 : 1 }}
                                     >
-                                        <Image
+                                        {/* <Image
                                             src={`${SCREENSHOT_PATH}${project.shortname}.png`}
                                             width={580}
                                             height={333}
                                             priority={true}
                                             alt={project.caption}
-                                        />
+                                        /> */}
+                                        {projects.map((screenshot, i) => (
+                                            <Image
+                                                className={styles.screenshot}
+                                                src={`${SCREENSHOT_PATH}${screenshot.shortname}.png`}
+                                                width={580}
+                                                height={333}
+                                                alt={screenshot.caption}
+                                                priority={screenshot.shortname === project.shortname}
+                                                style={{
+                                                    zIndex: screenshot.shortname === project.shortname ? 10 : -1
+                                                }}
+                                                key={i} />
+                                        ))}
                                     </div>
 
                                     <figcaption
@@ -238,16 +251,6 @@ const Work = () => {
                     </div>
                 </div>
             </section>
-            {/* Hackapotomus rex!!!  */}
-            {projects.map((project, i) => (
-                <Image
-                    src={`${SCREENSHOT_PATH}${project.shortname}.png`}
-                    width={0}
-                    height={0}
-                    alt={project.caption}
-                    style={{ visibility: `hidden` }}
-                    key={i} />
-            ))}
         </div>
     );
 };

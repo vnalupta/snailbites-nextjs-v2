@@ -5,7 +5,7 @@
 $FADE_TIMING: 350;
 $fadeTiming: string.unquote($FADE_TIMING + "ms");
 :export {
-  FADE_TIMING: $FADE_TIMING
+    FADE_TIMING: $FADE_TIMING;
 }
 
 .container {
@@ -19,41 +19,41 @@ $fadeTiming: string.unquote($FADE_TIMING + "ms");
     }
 }
 .sidebarWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  @media (min-width: 1100px) {
-    flex-direction: row;
-    align-items: initial;
-  }
+    @media (min-width: 1100px) {
+        flex-direction: row;
+        align-items: initial;
+    }
 }
 .sidebar {
-  flex: 1 1 100%;
-  text-align: center;
+    flex: 1 1 100%;
+    text-align: center;
 
-  @media (min-width: 1100px) {
-    text-align: left;
-    flex: initial;
-  }
+    @media (min-width: 1100px) {
+        text-align: left;
+        flex: initial;
+    }
 }
 .projectList {
     list-style-type: none;
 
     li {
-      margin-bottom: .75rem;
+        margin-bottom: 0.75rem;
 
-      @media (max-width: 1100px) {
-        display: inline;
+        @media (max-width: 1100px) {
+            display: inline;
 
-        &:after {
-          content: '|';
+            &:after {
+                content: "|";
+            }
+
+            &:last-child:after {
+                content: none;
+            }
         }
-
-        &:last-child:after {
-          content: none;
-        }
-      }
     }
 }
 .projectListLink > button {
@@ -65,13 +65,13 @@ $fadeTiming: string.unquote($FADE_TIMING + "ms");
 
     &:hover,
     &:focus {
-      text-shadow: 1px 1px 1px rgb(0,0,0,.5);
-      color: $eggshell;
-      cursor: pointer;
+        text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.5);
+        color: $eggshell;
+        cursor: pointer;
     }
 
     &:focus {
-      outline: none;
+        outline: none;
     }
 }
 .projectWrapper {
@@ -84,7 +84,7 @@ $fadeTiming: string.unquote($FADE_TIMING + "ms");
     flex: none;
 
     @media (min-width: 1100px) {
-    flex: 0 0 630px;
+        flex: 0 0 630px;
     }
 
     position: relative;
@@ -106,12 +106,18 @@ $fadeTiming: string.unquote($FADE_TIMING + "ms");
     padding: 10px;
     background-color: $sesame;
     transition: bottom $fadeTiming ease-out;
+    z-index: 20;
 
     & a {
         text-decoration: none;
     }
 }
+.screenshotWrapper {
+    transition: opacity $fadeTiming ease-out;
+    opacity: 1;
+}
 .screenshot {
-  transition: opacity $fadeTiming ease-out;
-  opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
