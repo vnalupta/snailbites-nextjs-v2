@@ -15,7 +15,7 @@ const BlogFeed = ({
             {showHeading ? (<h4 className={styles.heading}>Read more</h4>) : undefined}
             <ul className={styles.links}>
                 {metadata?.map((item, i) => (
-                    <li className={styles.item} key={item.id}>
+                    <li className={styles.item} key={i}>
 
                         {/* @ts-ignore */}
                         <Link href={`/blog/${item.path}`}>
