@@ -20,15 +20,19 @@ Our Design API is super simple, as are most front end style guides. We expose bu
 
 Let's take a closer look. I want to rapidly prototype a new page. To do that I need a heading and a button. I'll import buttons.scss and typography.scss. When I create my own software I will write:
 
+<img src="/assets/blogs/design-api-heading.png" style="float: left; height: 100px; padding: 0 10px 10px 0; border: 0 none;">
+
 ```html
+
 <h1>Heading</h1>
 <button class="”s-btn”">Button</button>
+
 ```
 
 I don't have to think about the code behind the button or the
 heading. I just know that the desired outcome is going to be correct.
-![](./design-api-heading.png) You
-could consider the exported classes as similar to setting a contract for a
+
+You could consider the exported classes as similar to setting a contract for a
 typical server/client architecture. The classes would not change except for a
 major revision, and those breaking changes would need to be communicated out to
 all the parties involved. ### Terminology There are so many terms floating
@@ -40,8 +44,10 @@ that the API layer is typically the “base” for a lot of the foundational dat
 client applications. In this regard, our Design APIs fulfill that role by
 providing the building blocks on which to develop more software. The diagram
 below illustrates how the entire system works.
-![](./design-api-flow.png) Note carefully the
-tightly coupled binding between design and development. We use language to
+
+![](/assets/blogs/design-api-flow.png)
+
+Note carefully the tightly coupled binding between design and development. We use language to
 couple these two together. The shared language is what eases the communication
 friction between teams and helps to reinforce the sort-of “contract” that is
 involved with other API development. The design API acts as a base layer for our
@@ -52,5 +58,5 @@ applications (Grubhub, Seamless, AllMenus, and Grubhub for Restaurants), for
 rapid prototyping in [CodePen Projects](https://codepen.io/pro/projects/), and
 for documentation in our Living Style Guide.
 
-### Future Use 
+### Future Use
 As you can see, we have a lot of future use for our Design APIs. Since we kept the code base CSS only, it is easily exportable into any application on the web. When Code Pen projects was launched, we were quickly able to produce rapid prototypes and provide working links to external parties. The uses are endless: quick demos for stakeholders, working prototypes that can be user tested, fleshed out ideas that design can hand off to developers. We also currently use the API in all sorts of different small scale applications: email templates, marketing modules, even our phone directory. Having a flat, CSS only system ensures its flexibility.

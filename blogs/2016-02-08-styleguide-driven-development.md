@@ -26,13 +26,13 @@ Here's where the interesting engineering work began. Now that we had a static se
 
 To fully automate our workflow into style guide driven development, we took advantage of some modern tooling.
 
-<img src="./yeoman-logo.png" style="float: left; height: 65px; padding: 0 10px 10px 0;">
+<img src="/assets/blogs/styleguide-yeoman-logo.png" style="float: left; height: 65px; padding: 0 10px 10px 0; border: 0 none;">
 
 ### Yeoman
 
 First things first, we needed a living style guide that actually looked like some sort of a website. We had a set of individual components floating around on static pages and in CodePen. We needed basic that had the ability to possibly scale into something bigger, and we needed it fast. [Yeoman](http://yeoman.io/) to the rescue! Using Yeoman we were able to quickly add our markup, convert our CSS into SCSS, and have a gulp build in one easy step.
 
-<img src="./bower-logo.svg" style="float: left; height: 65px; padding: 0 10px 10px 0;">
+<img src="/assets/blogs/styleguide-bower-logo.svg" style="float: left; height: 65px; padding: 0 10px 10px 0; border: 0 none;">
 
 ### Bower
 
@@ -46,7 +46,7 @@ Building on the scaffolding from Yeoman, we now had the seed of an application t
 
 Now, whenever a build of GrubHub or Seamless was done, it would automatically get the latest version of our style guide from the git remote repo, and copy it into the codebase. From there, the Grunt build had a job that would copy the output of that repo into a folder for consumption.
 
-<img src="https://cdn.worldvectorlogo.com/logos/gulp.svg" style="float: left; height: 100px; padding: 0 10px 10px 0;">
+<!-- <img src="https://cdn.worldvectorlogo.com/logos/gulp.svg" style="float: left; height: 100px; padding: 0 10px 10px 0;"> -->
 
 ### Gulp
 

@@ -22,37 +22,27 @@ export interface PostMetadata {
  *
  * @returns Array<string>
  */
-export function getMetadata() {
-    // Get file names under /posts
-    const dirNames = fs.readdirSync(postsDirectory);
+export function getMetadata () {
+    const fileNames = fs.readdirSync(postsDirectory);
 
-    const allMetadata = dirNames.map((currentDirName) => {
-        const relPath = `${BLOG_ROOT}/${currentDirName}`;
-        const currDir = `${process.cwd()}/${relPath}`;
-
-        const fileNames = fs.readdirSync(currDir);
-        const markdownFilename = fileNames.find(file => file.endsWith('md'));
-
+    const allMetadata = fileNames.map(post => {
         // Read markdown file as string
-        const fullPath = path.join(currDir, markdownFilename || '');
+        const fullPath = path.join(postsDirectory, post);
         const fileContents = fs.readFileSync(fullPath, "utf8");
 
         // Use gray-matter to parse the post metadata section
         const matterResult = matter(fileContents);
 
-        // Combine the data with the id
-        // currentDirName should have same name as md file
         return {
-            id : currentDirName,
-            relPath,
+            id: matterResult.data.path,
             ...matterResult.data,
         };
     });
 
-    // @ts-ignore
     // Sort posts by id
     return allMetadata.sort((a, b) => {
-        if (a.id < b.id) {
+        // @ts-ignore
+        if (a.date < b.date) {
             return 1;
         } else {
             return -1;

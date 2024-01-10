@@ -6,6 +6,7 @@ import html from 'remark-html';
 
 // should move this const to next config or something
 const BLOG_ROOT = "blogs";
+const FEATURE_POST = "redesign";
 const postsDirectory = path.join(process.cwd(), BLOG_ROOT);
 
 /**
@@ -14,22 +15,13 @@ const postsDirectory = path.join(process.cwd(), BLOG_ROOT);
  *
  * @returns Array<string>
  */
-export async function getPost(shortname?: string) {
-    let cwd;
-
-    if (!shortname) {
-        const allDirNames = fs.readdirSync(postsDirectory);
-        const mostRecentBlog = allDirNames[allDirNames.length - 1];
-        cwd = `${process.cwd()}/${BLOG_ROOT}/${mostRecentBlog}`;
-    } else {
-        cwd = shortname;
-    }
-
-    const fileNames = fs.readdirSync(cwd);
-    const markdownFilename = fileNames.find((file) => file.endsWith("md"));
+export async function getPost(shortname: string = FEATURE_POST) {
+    const allFileNames = fs.readdirSync(postsDirectory);
+    const filename = allFileNames.find(file => file.endsWith(`${shortname}.md`));
+    console.log(shortname, filename)
 
     // Read markdown file as string
-    const fullPath = path.join(cwd, markdownFilename || "");
+    const fullPath = path.join(postsDirectory, filename || "");
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
     // Use gray-matter to parse the post metadata section
@@ -37,9 +29,7 @@ export async function getPost(shortname?: string) {
 
      // Use remark to convert markdown into HTML string
     const processedContent = await remark()
-        .use(html, {
-            sanitize: false
-        })
+        .use(html, {sanitize: false})
         .process(matterResult.content);
     const contentHtml = processedContent.toString();
 
