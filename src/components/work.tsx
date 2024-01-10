@@ -148,7 +148,7 @@ const Work = () => {
                 setTimeout(() => {
                     setLoading(false);
                     setDrawer(true);
-                }, 100);
+                }, 200);
 
                 window.cancelAnimationFrame(id);
             }
