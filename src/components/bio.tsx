@@ -28,9 +28,10 @@ const Bio = () => {
                     alt="Vincent Nalupta's shadow against some subway tiles."
                     width={240}
                     height={320}
+                    priority={true}
                     style={{
                         position: `relative`,
-                        zIndex: 10                        
+                        zIndex: 10
                     }}
                 />
             </div>
@@ -91,7 +92,7 @@ const Profile = ({ inView, children }: {
     return(
     <div className={`${styles.column} ${styles.rhs}`}
         style={{
-            transform: inView ? `translateX(0)` : `initial`,            
+            transform: inView ? `translateX(0)` : `initial`,
             opacity: inView ? 1 : 0
         }}>
         {children}
