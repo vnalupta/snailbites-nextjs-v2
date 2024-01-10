@@ -2,7 +2,6 @@
 import { useRef } from "react";
 
 import styles from './bio.module.scss'
-import profile from 'profile.png'
 
 import Button from "./button";
 import Image from "next/image";
@@ -25,7 +24,7 @@ const Bio = () => {
 
                 <Image
                     className={styles.profile}
-                    src={profile}
+                    src={`/profile.png`}
                     alt="Vincent Nalupta's shadow against some subway tiles."
                     width={240}
                     height={320}
