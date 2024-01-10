@@ -2,7 +2,7 @@
 import { useRef } from "react";
 
 import styles from './bio.module.scss'
-import profile from '/public/profile.png'
+import profile from 'profile.png'
 
 import Button from "./button";
 import Image from "next/image";
@@ -24,15 +24,12 @@ const Bio = () => {
                 </div>
 
                 <Image
+                    className={styles.profile}
                     src={profile}
                     alt="Vincent Nalupta's shadow against some subway tiles."
                     width={240}
                     height={320}
                     priority={true}
-                    style={{
-                        position: `relative`,
-                        zIndex: 10
-                    }}
                 />
             </div>
             <Profile inView={inView}>
