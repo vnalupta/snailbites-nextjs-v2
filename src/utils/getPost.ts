@@ -18,7 +18,6 @@ const postsDirectory = path.join(process.cwd(), BLOG_ROOT);
 export async function getPost(shortname: string = FEATURE_POST) {
     const allFileNames = fs.readdirSync(postsDirectory);
     const filename = allFileNames.find(file => file.endsWith(`${shortname}.md`));
-    console.log(shortname, filename)
 
     // Read markdown file as string
     const fullPath = path.join(postsDirectory, filename || "");

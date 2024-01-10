@@ -16,7 +16,7 @@ body {
 html {
     font-size: $fontSize;
 }
-body {                
+body {
     color: $eggshell;
     background: $sesame;
     line-height: 1.65;
@@ -30,21 +30,21 @@ h1, h2, h3, h4, h5, dt {
 }
 p, footer, figcaption {
     font-weight: 300;
-}    
-h1, .h1 { 
-    font-size: 3.052rem; 
-    line-height: 3.125rem; 
+}
+h1, .h1 {
+    font-size: 3.052rem;
+    line-height: 3.125rem;
 }
 h2, .h2 { font-size: 2.441rem; }
 h3, .h3 { font-size: 1.952rem; }
 h4, .h4 { font-size: 1.563rem; }
 h5, .h5, dt, .lead { font-size: 1.05rem; }
-p, .body { font-size: 1rem; }        
-footer, figcaption, .small { font-size: 0.75rem; }    
+p, .body { font-size: 1rem; }
+figcaption, .small { font-size: 0.75rem; }
 b { font-weight: 500}
 dt { margin-top: 1em; }
-dd { 
-    margin-left: 0; 
+dd {
+    margin-left: 0;
     &:before {
         content: "• ";
     }
@@ -55,7 +55,7 @@ a { color: $neon }
  * Animations
  **/
 @keyframes moveHorizontal {
-    from { 
+    from {
         transform: translate(10vw, 22vh);
     }
     to {

@@ -1,33 +1,30 @@
-import React from "react";
-import styled from "styled-components"
-// import Link from "next/link"
+import Link from "next/link";
+import styles from "./blogfeed.module.scss";
+import { getMetadata } from "@/utils/getMetadata";
 
-const BlogFeed = () => {
+// @ts-ignore
+const BlogFeed = ({
+    showHeading,
+}: {
+    showHeading: boolean;
+}) => {
+    const metadata = getMetadata();
 
     return (
         <>
-            <p className="lead" style={{marginBottom: `.5em`}}>Blog Posts</p>
-            <StyledList>
-                {/*
-                {entries.map((entry, i) => (
-                    <li className="body" key={i}>
-                         <FadeLink
-                            to={`blog/${entry.node.fields.slug}`}
-                        >
-                            {entry.node.frontmatter.title}
-                        </FadeLink>
+            {showHeading ? (<h4 className={styles.heading}>Read more</h4>) : undefined}
+            <ul className={styles.links}>
+                {/* @ts-ignore */}
+                {metadata?.map((item, i) => (
+                    <li className={styles.item} key={item.id}>
+                        <Link href={`/blog/${item.path}`}>
+                            {item.title}
+                        </Link>
                     </li>
                 ))}
-            */}
-            </StyledList>
+            </ul>
         </>
     )
 }
-
-const StyledList = styled.ul`
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-`
 
 export default BlogFeed;

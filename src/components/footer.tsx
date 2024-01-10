@@ -1,22 +1,16 @@
-'use client'
-
-import { usePathname } from 'next/navigation'
-
 import styles from "./footer.module.scss"
-import Color from "@/styles/color.module.scss"
 
 import Social from '@/components/social';
 import BlogFeed from '@/components/blogfeed';
+import { getMetadata } from '@/utils/getMetadata';
 
 const Footer = () => {
-    const pathname = usePathname();
-
     return (
         <footer className={styles.container}>
             <div className={styles.footerWrapper}>
                 {/* Fixes zindex bug with mountain SVG above it */}
                 <section className={styles.footerBody}>
-                    {pathname === '/' && <BlogFeed />}
+                    <BlogFeed showHeading={false} />
                     <p className="small">This site was made with {" "}
                         <a
                             href="https://nextjs.org/"

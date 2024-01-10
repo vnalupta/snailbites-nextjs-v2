@@ -1,18 +1,10 @@
-import React, { FC } from "react"
-
 import styles from "./social.module.scss"
-import Color from "@/styles/color.module.scss"
-
-import { usePathname } from 'next/navigation';
-
 import Link from "next/link";
 
 const rootPath = `/`
 const blogPath = `/blog/`
 
 function Social() {
-    const pathname = usePathname();
-
     return (
         <div className={styles.container}>
             <p className={styles.heading}>What&apos;s good?</p>
