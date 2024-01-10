@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
-import '@/styles/normalize.css'
 import '@/styles/styles.scss';
 
 const poppins = Poppins({
@@ -11,7 +10,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   "title": "Snailbites - the digital home of Vincent Nalupta",
-  "description": "Snailbites is the digital home of Vincent Nalupta, a UX Engineer in NYC.",     
+  "description": "Snailbites is the digital home of Vincent Nalupta, a UX Engineer in NYC.",
 }
 
 export default function RootLayout({

@@ -2,13 +2,13 @@ import Color from "@/styles/color.module.scss";
 
 /**
  * Button
- * @param prop 
+ * @param prop
  */
 const Button: React.FC<{
     children?: React.ReactNode,
     flavor?: 'default' | 'link',
     selected?: boolean,
-    onClick?: (e) => void
+    onClick?: () => void
 }> = ({ children, flavor, selected, onClick }) => {
 
     const defaultStyles = {
@@ -47,12 +47,12 @@ const Button: React.FC<{
         },
         ...(selected && { color: `${Color.eggshell}` })
     }
-    
+
     let styles = flavor === 'link' ? linkStyles : defaultStyles;
 
     return (
-        <button 
-            type="button" 
+        <button
+            type="button"
             style={styles}
             onClick={onClick}>
             {children}

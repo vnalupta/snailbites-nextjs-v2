@@ -14,10 +14,12 @@ const BlogFeed = ({
         <>
             {showHeading ? (<h4 className={styles.heading}>Read more</h4>) : undefined}
             <ul className={styles.links}>
-                {/* @ts-ignore */}
                 {metadata?.map((item, i) => (
                     <li className={styles.item} key={item.id}>
+
+                        {/* @ts-ignore */}
                         <Link href={`/blog/${item.path}`}>
+                            {/* @ts-ignore */}
                             {item.title}
                         </Link>
                     </li>
