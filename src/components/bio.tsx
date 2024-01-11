@@ -33,7 +33,7 @@ const Bio = () => {
             </div>
             <Profile inView={inView}>
                 {/* fix heading variant */}
-                <h2 ref={bioRef} style={{ marginBottom: "10px" }}>
+                <h2 ref={bioRef} className={styles.profileHeading}>
                     HELLO!
                 </h2>
                 <p>My name is Vince and I am an Engineering Manager for Web platform things.</p>
@@ -51,7 +51,7 @@ const Bio = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >fun talks</Link>.</p>
-                <p style={{ marginBottom: "30px"}}>
+                <p className={styles.profileClosing}>
                     I keep this space so I can still play with code for funsies.
                 </p>
 

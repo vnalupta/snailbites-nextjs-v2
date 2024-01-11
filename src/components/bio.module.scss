@@ -9,7 +9,7 @@
     }
 }
 .column {
-    max-width: 300px;
+    max-width: 450px;
     align-self: flex-end;
 }
 .bioWrapper {
@@ -21,6 +21,12 @@
 .profile {
     position: relative;
     z-index: 10;
+}
+.profileHeading {
+    margin-bottom: 10px;
+}
+.profileClosing {
+    margin-bottom: 30px;
 }
 .rhs {
     transform: translateX(10px);
