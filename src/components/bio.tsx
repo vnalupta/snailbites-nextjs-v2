@@ -24,7 +24,7 @@ const Bio = () => {
 
                 <Image
                     className={styles.profile}
-                    src={`/profile.png`}
+                    src={`/profile.jpg`}
                     alt="Vincent Nalupta's shadow against some subway tiles."
                     width={240}
                     height={320}
@@ -33,43 +33,26 @@ const Bio = () => {
             </div>
             <Profile inView={inView}>
                 {/* fix heading variant */}
-                <h2 ref={bioRef} style={{ marginBottom: "10px" }}>
+                <h2 ref={bioRef} className={styles.profileHeading}>
                     HELLO!
                 </h2>
+                <p>My name is Vince and I am an Engineering Manager for Web platform things.</p>
                 <p>
-                    My name is Vincent Nalupta and I am an Engineering
-                    Manager.
+                    I&apos;ve been building on the web since jQuery was king
+                    and rounded corners were made with background images.
                 </p>
-                <p>
-                    I&apos;ve won some{" "}
-                    <Link
+                <p>In my time as a dev, I built some of the <Link
                         href="https://www.commarts.com/webpicks/timothy-goodman"
                         target="_blank"
                         rel="noopener noreferrer"
-                    >
-                        awards
-                    </Link>{" "}
-                    for my work and some{" "}
-                    <Link
-                        href="https://twitter.com/snailbites/status/917875803983147008"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        giant pencils
-                    </Link>{" "}
-                    for my{" "}
-                    <Link
+                    >Web&apos;s earliest responsive
+                    design sites</Link> and given some <Link
                         href="https://cssdevconf2016.sched.com/vnalupta"
                         target="_blank"
                         rel="noopener noreferrer"
-                    >
-                        talks
-                    </Link>
-                    .
-                </p>
-                <p style={{ marginBottom: "30px"}}>
-                    This is my space to flex my design chops and write about
-                    interesting tech.
+                    >fun talks</Link>.</p>
+                <p className={styles.profileClosing}>
+                    I keep this space so I can still play with code for funsies.
                 </p>
 
                 <Link href="/blog">
