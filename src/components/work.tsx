@@ -201,13 +201,6 @@ const Work = () => {
                                         className={styles.screenshotWrapper}
                                         style={{ opacity: loading ? 0 : 1 }}
                                     >
-                                        {/* <Image
-                                            src={`${SCREENSHOT_PATH}${project.shortname}.png`}
-                                            width={580}
-                                            height={333}
-                                            priority={true}
-                                            alt={project.caption}
-                                        /> */}
                                         {projects.map((screenshot, i) => (
                                             <Image
                                                 className={styles.screenshot}
