@@ -16,7 +16,9 @@ const Navigation = () => {
         if (!destination) {
             return;
         }
+
         // work is the only one that needs scrolling
+        event.preventDefault();
         setTimeout(() => {
             const workEl = document.getElementById('work');
             workEl?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -48,7 +50,7 @@ const Navigation = () => {
                     </Link>
                 </li>
                 <li className="h1">
-                    <Link href={rootPath} onClick={(e) => handleClick(e, 'work')}>
+                    <Link href={`${rootPath}#work`} onClick={(e) => handleClick(e, 'work')}>
                         Work
                     </Link>
                 </li>
