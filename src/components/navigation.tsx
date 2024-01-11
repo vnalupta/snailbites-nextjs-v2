@@ -25,7 +25,7 @@ const Navigation = () => {
         // handle the work use case
         event.preventDefault();
         if (pathname.includes(blogPath)) {
-            router.push('/', { scroll: true });
+            router.push('/#work', { scroll: true });
         }
         setTimeout(() => {
             const workEl = document.getElementById('work');
