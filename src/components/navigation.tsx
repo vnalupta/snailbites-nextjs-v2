@@ -1,14 +1,19 @@
 'use client';
 
-import { useState } from "react"
 import styles from "./navigation.module.scss";
+
+import { useState } from "react"
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
+
 const rootPath = `/`
-const blogPath = `/blog/`
+const blogPath = `/blog`
 
 const Navigation = () => {
     const [open, setOpen] = useState(false);
+    const router = useRouter()
+    const pathname = usePathname()
 
     const handleClick = (event?: React.MouseEvent<HTMLAnchorElement>, destination?: string) => {
         setOpen(!open);
@@ -17,11 +22,14 @@ const Navigation = () => {
             return;
         }
 
-        // work is the only one that needs scrolling
+        // handle the work use case
         event.preventDefault();
+        if (pathname.includes(blogPath)) {
+            router.push('/', { scroll: true });
+        }
         setTimeout(() => {
             const workEl = document.getElementById('work');
-            workEl?.scrollIntoView({ behavior: "smooth", block: "start" });
+            workEl?.scrollIntoView({ behavior: "smooth", block: "center" });
         }, 350);
     }
 
