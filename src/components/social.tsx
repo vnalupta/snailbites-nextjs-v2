@@ -11,6 +11,7 @@ function Social() {
             <ul className={styles.list}>
                 <li><a href="https://twitter.com/snailbites">Twitter</a></li>
                 <li><a href="https://www.linkedin.com/in/vnalupta/">LinkedIn</a></li>
+                <li><a href="https://github.com/vnalupta/snailbites-nextjs-v2">Github</a></li>
             </ul>
             <ul className={styles.list}>
                 <li>
