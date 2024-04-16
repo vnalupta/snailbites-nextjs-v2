@@ -52,7 +52,11 @@ const Bio = () => {
                         rel="noopener noreferrer"
                     >fun talks</Link>.</p>
                 <p className={styles.profileClosing}>
-                    I keep this space so I can still play with code for funsies.
+                    I keep this space so I can still play with code for funsies. (Check out <Link
+                        href="https://github.com/vnalupta/snailbites-nextjs-v2/tree/main/src"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >the source</Link> if you like!)
                 </p>
 
                 <Link href="/blog">
