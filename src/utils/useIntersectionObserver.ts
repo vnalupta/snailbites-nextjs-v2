@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 
 /**
- * @param {*} ref 
- * @param {*} settings 
+ * @param {*} ref
+ * @param {*} settings
  * @example
- * 
+ *
  * const [inView] = useIntersectionObserver(footerRef, {
  *   threshold: 0
- * }) 
- * 
+ * })
+ *
  * useEffect(() => {
  *  // perform action
  * }, [inView]);
- * 
+ *
  */
 const useIntersectionObserver = (
     ref,
@@ -27,7 +27,7 @@ const useIntersectionObserver = (
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries, observerInstance) => {
-                if (entries[0].intersectionRatio > 0) {                              
+                if (entries[0].intersectionRatio > 0) {
                     setState({
                         inView: true,
                         triggered: true,
@@ -35,7 +35,7 @@ const useIntersectionObserver = (
                     })
                     observerInstance.unobserve(ref.current);
                 }
-    
+
                 return;
             }, {
                 threshold: threshold,

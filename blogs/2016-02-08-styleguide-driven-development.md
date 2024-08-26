@@ -12,9 +12,7 @@ Such was the case with my refactor of our application. After an entire sprint I 
 
 Our biggest problem, as mentioned earlier, was that we were styling each page, and each section in each page, as if they were a unique element. Sure we had a bootstrap foundation, but when it came down to the details, we were constantly doing things like coloring buttons red, setting the font size, and creating hover states.
 
-> I had to really think about the problem I was trying to solve.
-
-I needed to get the file size down and get it to load faster. That was the ultimate goal. And what's the only way to get file size down? Is to create a set of reusable classes that we put together to assemble components in the markup.
+I had to really think about the problem I was trying to solve. I needed to get the file size down and get it to load faster. That was the ultimate goal. And what's the only way to get file size down? Is to create a set of reusable classes that we put together to assemble components in the markup.
 
 The answer, believe it or not, wasn't entirely obvious. I ended up talking to a designer on the team about his passion to create a pattern library and living style guide. He was already on the way to approach this from the design side. That's when it clicked with me that the pattern library was the solution to assembling reusable components in the markup. I found out from conversations with the designers, that not only was styling each little element differently a big problem on the code side, but it was just as big of a problem with design consistency on the design side.
 
