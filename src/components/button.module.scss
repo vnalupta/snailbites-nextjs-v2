@@ -10,12 +10,15 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 6px;
-    transition: 100ms ease-in all;
+    transition: 250ms ease-in all;
     background: $neon;
     color: $sesame;
+    opacity: 0.85;
 
     &:hover {
-        opacity: 0.85;
+        text-decoration: none;
+        opacity: 1.0;
+        outline: 1px solid $smoke;
     }
 }
 
