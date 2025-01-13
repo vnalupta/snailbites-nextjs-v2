@@ -43,8 +43,8 @@ $fadeTiming: string.unquote($FADE_TIMING + "ms");
     li {
         margin-bottom: 0.75rem;
 
-        @media (max-width: 1100px) {
-            display: inline;
+        @media (max-width: 1100px) {            
+            display: inline;            
 
             &:after {
                 content: "|";
@@ -53,25 +53,11 @@ $fadeTiming: string.unquote($FADE_TIMING + "ms");
             &:last-child:after {
                 content: none;
             }
+
+            & > a {
+                margin: 0 8px;
+            }
         }
-    }
-}
-.projectListLink > button {
-    text-align: initial;
-    background: inherit;
-    border: none;
-    text-decoration: none;
-    transition: text-shadow 300ms ease-out, color 250ms ease-out;
-
-    &:hover,
-    &:focus {
-        text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.5);
-        color: $eggshell;
-        cursor: pointer;
-    }
-
-    &:focus {
-        outline: none;
     }
 }
 .projectWrapper {

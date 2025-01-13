@@ -171,7 +171,7 @@ const Work = () => {
                                     key={item.shortname}
                                     className={styles.projectListLink}
                                 >
-                                    <button
+                                    <a
                                         style={{
                                             color:
                                                 project.shortname ===
@@ -179,10 +179,11 @@ const Work = () => {
                                                     ? Color.eggshell
                                                     : Color.neon,
                                         }}
+
                                         onClick={() => handleClick(item)}
                                     >
                                         {item.name}
-                                    </button>
+                                    </a>
                                 </li>
                             ))}
                         </ul>
