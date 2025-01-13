@@ -2,6 +2,7 @@
 import { useRef } from "react";
 
 import styles from './bio.module.scss'
+import buttonStyles from "./button.module.scss"
 
 import Button from "./button";
 import Image from "next/image";
@@ -59,10 +60,7 @@ const Bio = () => {
                     >the source</Link> if you like!)
                 </p>
 
-                <Link href="/blog">
-                    {/* Fix responsive */}
-                    <Button>Read the Blog</Button>
-                </Link>
+                <Link href="/blog" className={buttonStyles.base}>Read the Blog</Link>
             </Profile>
         </section>
     );

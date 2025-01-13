@@ -1,0 +1,44 @@
+@import "../styles/color.module.scss";
+
+.base {
+    display: inline-block;
+    border: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    padding: 10px 25px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    transition: 100ms ease-in all;
+    background: $neon;
+    color: $sesame;
+
+    &:hover {
+        opacity: 0.85;
+    }
+}
+
+/*
+    NOT USED ATM!
+
+    
+    const linkStyles = {
+        textAlign: 'initial' as any,
+        background: 'inherit',
+        border: 'none',
+        textDecoration: 'none',
+        transition: 'text-shadow 300ms ease-out, color 250ms ease-out',
+        color: 'primary',
+
+        '&:hover, &:focus': {
+            textShadow: '1px 1px 1px rgb(0,0,0,.5)',
+            color: `${Color.eggshell}`,
+            cursor: 'pointer',
+        },
+        '&:focus': {
+            outline: 'none',
+        },
+        ...(selected && { color: `${Color.eggshell}` })
+    }
+*/

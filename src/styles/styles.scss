@@ -50,7 +50,17 @@ dd {
         content: "• ";
     }
 }
-a { color: $neon }
+a { 
+    color: $neon;
+    text-decoration-color: transparent;
+    transition: 350ms ease-out text-decoration-color;
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        text-decoration-color: $neon;        
+    }
+}
 
 /**
  * Animations
