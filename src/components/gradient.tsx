@@ -1,8 +1,9 @@
 'use client';
 
-import { FunctionComponent, useEffect, useRef, useState } from "react";
-import styles from "./gradient.module.scss"
+import {useEffect, useRef, useState } from "react";
 import useIntersectionObserver from "@/utils/useIntersectionObserver";
+
+import * as styles from "@/components/gradient.css";
 
 const Gradient = () => {
     const footerRef = useRef(null);
@@ -21,8 +22,6 @@ const Gradient = () => {
             ref={footerRef}
             className={styles.container}>
             <svg viewBox="0 0 1440 380" xmlns="http://www.w3.org/2000/svg"
-
-                className={styles.gradient}
                 style={{
                     position: 'relative',
                     zIndex: 1

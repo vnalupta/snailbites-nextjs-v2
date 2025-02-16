@@ -1,5 +1,5 @@
 import Color from '@/styles/color.module.scss'
-import styles from './mountains.module.scss'
+import * as styles from "@/components/mountains.css";
 
 const Mountains = () => (
     <section className={styles.wrapper}>

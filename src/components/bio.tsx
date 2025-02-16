@@ -1,10 +1,9 @@
 'use client';
 import { useRef } from "react";
 
-import styles from './bio.module.scss'
 import buttonStyles from "./button.module.scss"
+import * as styles from "@/components/bio.css";
 
-import Button from "./button";
 import Image from "next/image";
 import Link from "next/link";
 
