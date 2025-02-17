@@ -6,3 +6,5 @@ export const COLOR = {
     neon: `#D6E307`,
     eggshell: `#D8D8D8`,
 }
+
+export const FADE_TIMING = 350;

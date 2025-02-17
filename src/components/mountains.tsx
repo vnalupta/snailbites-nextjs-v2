@@ -1,13 +1,13 @@
-import Color from '@/styles/color.module.scss'
+import { COLOR } from '@/globals/tokens';
 import * as styles from "@/components/mountains.css";
 
 const Mountains = () => (
     <section className={styles.wrapper}>
         <div className={styles.mountain}>
-            <MountainSVG hex={Color.smoke} isBG={true} />
+            <MountainSVG hex={COLOR.smoke} isBG={true} />
         </div>
         <div className={styles.mountain}>
-            <MountainSVG hex={Color.ocean} />
+            <MountainSVG hex={COLOR.ocean} />
         </div>
     </section>
 )

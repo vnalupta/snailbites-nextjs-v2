@@ -1,4 +1,4 @@
-import styles from "./social.module.scss"
+import * as styles from "@/components/social.css";
 import Link from "next/link";
 
 const rootPath = `/`
@@ -9,15 +9,21 @@ function Social() {
         <div className={styles.container}>
             <p className={styles.heading}>What&apos;s good?</p>
             <ul className={styles.list}>
-                <li><a href="https://twitter.com/snailbites">Twitter</a></li>
-                <li><a href="https://www.linkedin.com/in/vnalupta/">LinkedIn</a></li>
-                <li><a href="https://github.com/vnalupta/snailbites-nextjs-v2">Github</a></li>
+                <li className={styles.listItem}>
+                    <a href="https://twitter.com/snailbites">Twitter</a>
+                </li>
+                <li className={styles.listItem}>
+                    <a href="https://www.linkedin.com/in/vnalupta/">LinkedIn</a>
+                </li>
+                <li className={styles.listItem}>
+                    <a href="https://github.com/vnalupta/snailbites-nextjs-v2">Github</a>
+                </li>
             </ul>
             <ul className={styles.list}>
-                <li>
+                <li className={styles.listItem}>
                     <Link href={rootPath}>Home</Link>
                 </li>
-                <li>
+                <li className={styles.listItem}>
                     <Link href={blogPath}>Blog</Link>
                 </li>
             </ul>

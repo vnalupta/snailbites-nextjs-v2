@@ -1,4 +1,4 @@
-import "@/styles/styles.scss";
+import "@/globals/styles.scss";
 
 import Jumbotron from "@/components/jumbotron";
 import Mountains from "@/components/mountains";
