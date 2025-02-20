@@ -1,6 +1,5 @@
-import Link from "next/link";
-import styles from "./blogbody.module.scss";
 import BlogFeed from "./blogfeed";
+import * as styles from "@/components/blogbody.css";
 
 // @ts-ignore
 const BlogBody = ({ metadata, post }) => {
@@ -15,7 +14,7 @@ const BlogBody = ({ metadata, post }) => {
                     }}
                 />
             </section>
-            <aside className={styles.sidebar}>
+            <aside>
                 <BlogFeed showHeading={true} />
             </aside>
         </div>

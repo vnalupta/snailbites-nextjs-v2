@@ -1,8 +1,9 @@
 "use client";
 
+import { clsx } from 'clsx';
 import { useState, useEffect, useRef } from "react";
-import Color from "@/styles/color.module.scss";
-import styles from "./work.module.scss";
+import { COLOR, FADE_TIMING } from "@/globals/tokens";
+import * as styles from "@/components/work.css";
 
 import imac from "/public/screenshots/work-imac.png";
 import Image from "next/image";
@@ -139,7 +140,7 @@ const Work = () => {
             if (!start) {
                 start = timestamp;
             }
-            if (timestamp - start <= parseInt(styles.FADE_TIMING, 0)) {
+            if (timestamp - start <= FADE_TIMING) {
                 window.requestAnimationFrame(tick);
             } else {
                 setProject(item);
@@ -166,18 +167,22 @@ const Work = () => {
                 <div className={styles.sidebarWrapper}>
                     <aside className={styles.sidebar}>
                         <ul className={styles.projectList}>
-                            {projects.map((item) => (
+                            {projects.map((item, idx) => (
                                 <li
                                     key={item.shortname}
-                                    className={styles.projectListLink}
+                                    className={clsx(
+                                        styles.projectListItem,
+                                        idx === projects.length - 1 && styles.lastChild
+                                    )}
                                 >
                                     <a
+                                        className={styles.projectListLink}
                                         style={{
                                             color:
                                                 project.shortname ===
                                                 item.shortname
-                                                    ? Color.eggshell
-                                                    : Color.neon,
+                                                    ? COLOR.eggshell
+                                                    : COLOR.neon,
                                         }}
 
                                         onClick={() => handleClick(item)}
@@ -228,6 +233,7 @@ const Work = () => {
                                         {project.url && ` `}
                                         {project.url && (
                                             <a
+                                                className={styles.projectCaptionLink}
                                                 href={project.url}
                                                 rel="noopener noreferrer"
                                                 target="_blank"

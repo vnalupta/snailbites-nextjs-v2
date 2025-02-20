@@ -1,8 +1,7 @@
-import styles from "./footer.module.scss"
+import * as styles from "@/components/footer.css"
 
 import Social from '@/components/social';
 import BlogFeed from '@/components/blogfeed';
-import { getMetadata } from '@/utils/getMetadata';
 
 const Footer = () => {
     return (

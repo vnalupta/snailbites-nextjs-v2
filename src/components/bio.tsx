@@ -1,10 +1,10 @@
 'use client';
 import { useRef } from "react";
 
-import styles from './bio.module.scss'
-import buttonStyles from "./button.module.scss"
+// import buttonStyles from "./button.module.scss"
+import * as styles from "@/components/bio.css";
+import { base } from "@/components/button.css"
 
-import Button from "./button";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -60,7 +60,7 @@ const Bio = () => {
                     >the source</Link> if you like!)
                 </p>
 
-                <Link href="/blog" className={buttonStyles.base}>Read the Blog</Link>
+                <Link href="/blog" className={base}>Read the Blog</Link>
             </Profile>
         </section>
     );

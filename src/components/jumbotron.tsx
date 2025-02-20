@@ -1,9 +1,9 @@
 'use client';
 
-import styles from './jumbotron.module.css'
 import { useRef } from 'react';
-
 import useIntersectionObserver from '@/utils/useIntersectionObserver'
+
+import * as styles from "@/components/jumbotron.css";
 
 const Jumbotron = () => {
     const titleRef = useRef(null);
@@ -12,10 +12,10 @@ const Jumbotron = () => {
     })
 
     return (
-        <div ref={titleRef}            
+        <div ref={titleRef}
             className={styles.wrapper} >
-            <TitleWrapper inView={inView}> 
-                <Crown inView={inView} /> 
+            <TitleWrapper inView={inView}>
+                <Crown inView={inView} />
                 <h1 className={styles.heading}>SNAILBITES</h1>
             </TitleWrapper>
         </div>
@@ -28,9 +28,9 @@ const Crown = ({ inView, style }: {
         style?: React.CSSProperties;
     }) => (
         <svg xmlns="http://www.w3.org/2000/svg"
-            className={styles.crown}        
+            className={styles.crown}
             style={{
-                transform: inView 
+                transform: inView
                     ? `scale(0.5) rotate(32deg)`
                     : `scale(0.5) rotate(5deg) translate(-16px, -8px)`
             }}>

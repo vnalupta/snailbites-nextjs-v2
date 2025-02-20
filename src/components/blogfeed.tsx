@@ -1,6 +1,7 @@
 import Link from "next/link";
-import styles from "./blogfeed.module.scss";
+import * as styles from "@/components/blogfeed.css";
 import { getMetadata } from "@/utils/getMetadata";
+
 
 // @ts-ignore
 const BlogFeed = ({
@@ -12,11 +13,10 @@ const BlogFeed = ({
 
     return (
         <>
-            {showHeading ? (<h4 className={styles.heading}>Read more</h4>) : undefined}
+            {showHeading ? (<h4>Read more</h4>) : undefined}
             <ul className={styles.links}>
                 {metadata?.map((item, i) => (
-                    <li className={styles.item} key={i}>
-
+                    <li key={i}>
                         {/* @ts-ignore */}
                         <Link href={`/blog/${item.path}`}>
                             {/* @ts-ignore */}
